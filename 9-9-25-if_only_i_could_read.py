@@ -13,4 +13,5 @@ for i in range(t):
     if res!=[]:
         print(res[0],res[1])
     else:
+
         print(-1)
