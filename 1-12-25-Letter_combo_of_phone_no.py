@@ -1,30 +1,26 @@
 class Solution:
-    def validStrings(self, n: int) -> List[str]:
-        # res=["0","1"]
-        # i=1
-        # while(i<n):
-        #     m=len(res)
-        #     while(m>0):
-        #         a=res.pop(0)
-        #         if a[-1]=="0":
-        #             res.append(a+"1")
-        #         else:
-        #             res.append(a+"0")
-        #             res.append(a+"1")
-        #         m-=1
-        #     i+=1
+    def letterCombinations(self, digits: str) -> List[str]:
+        dig={'2':['a','b','c'],'3':['d','e','f'],'4':['g','h','i'],'5':['j','k','l'],'6':['m','n','o'],'7':['p','q','r','s'],'8':['t','u','v'],'9':['w','x','y','z']}
         res=[]
-        def gen(s,n):
-            if n==0:
+        n=len(digits)
+        # for i in digits:
+        #     if res==[]:
+        #         res=dig[i]
+        #     else:
+        #         n=len(res)
+        #         cnt=0
+        #         while(cnt<n):
+        #             a=res[0]
+        #             for j in dig[i]:
+        #                 res.append(a+j)
+        #             res.pop(0)
+        #             cnt+=1
+        def gen(digits,i,s):
+            if i==n:
                 res.append(s)
                 return
-            if s[-1]=="0":
-                gen(s+"1",n-1)
-            else:
-                gen(s+"0",n-1)
-                gen(s+"1",n-1)
-        gen("0",n-1)
-        gen("1",n-1)
+            for j in dig[digits[i]]:
+                gen(digits,i+1,s+j)
+        gen(digits,0,"")
         return res
-
 
